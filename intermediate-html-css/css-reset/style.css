@@ -1,0 +1,39 @@
+/* Modern font optimization with system font fallback stack */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+p {
+  font-weight: 400;
+}
+
+/* Without box-sizing reset, the 244px .box element would overflow its parent */
+.parent {
+  width: 200px;
+  border: 2px solid black;
+}
+
+.box {
+  width: 100%;
+  border: 2px solid hotpink;
+  padding: 20px;
+}
+
+/* To fix image reset when you intentionally want oversized images */
+img.oversized {
+  position: absolute;
+  width: 120%;
+  max-width: revert;
+  left: -10%;
+  right: -10%;
+}
