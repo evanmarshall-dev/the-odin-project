@@ -1,0 +1,143 @@
+/* Select ALL child and grandchild divs inside of main */
+main div {
+  border: 2px solid purple;
+  height: 5rem;
+  margin: 1rem;
+}
+
+/* Select ONLY child divs inside of main */
+main > div {
+  border: 2px solid blue;
+  height: 5rem;
+  margin: 1rem;
+}
+
+/* Select ONLY grandchild divs inside of main */
+main > div > div {
+  border: 2px solid green;
+  height: 5rem;
+  margin: 1rem;
+}
+
+/* Select ADJACENT to or on SAME LEVEL of indentation */
+.group1 + div {
+  border: 2px solid orange;
+  height: 5rem;
+  margin: 1rem;
+} /* only div with classes child group2 will be selected */
+
+.group1 + div + div {
+  border: 2px solid red;
+  height: 5rem;
+  margin: 1rem;
+} /* only div with classes child group 3 will be selected */
+
+/* Select ALL of group1's SIBLINGS */
+.group1 ~ div {
+  border: 2px solid pink;
+  height: 5rem;
+  margin: 1rem;
+} /* second and third .child divs will be selected */
+
+/* Pseudo-CLASS selectors are prefixed with a single colon and are a different way to target elements that already exist in HTML. Pseudo-ELEMENTS are prefixed with two colons and are used to target elements that don’t normally exist in the markup. If that doesn’t make sense straight away, don’t worry - we’ll explore some examples below. */
+
+/* Pseudo-classes: Pseudo-classes offer us different ways to target elements in our HTML. Some are based on their position or structure within the HTML. Others are based on the state of a particular element, or how the user is currently interacting with it. */
+
+/* This rule will apply to all links */
+a {
+  text-decoration: none;
+}
+
+/* This will apply to unvisited links */
+a:link {
+  color: blue;
+}
+
+a:hover {
+  color: orange;
+}
+
+a:focus {
+  outline: 2px solid orange;
+}
+
+/* And you guessed it, this applies to all links the user has clicked on */
+a:visited {
+  color: purple;
+}
+
+/* :root is a special class that represents the very top level of your document - the one element that has no parents. Generally when working with the web, this is equivalent to the html element, but there are a few subtle differences between :root and html. */
+
+/* :root is generally the place where you will place your ‘global’ CSS rules that you want available everywhere - such as your custom properties and CSS variables, or rules such as box-sizing: border-box;.
+
+:first-child and :last-child will match elements that are the first or last sibling.
+
+Similarly, :empty will match elements that have no children at all, and :only-child will match elements that don’t have any siblings.
+
+For a more dynamic approach we can use :nth-child(n). This is a flexible pseudo-class with a few different uses. */
+/*   .myList:nth-child(5) /* Selects the 5th element with class myList */
+/*  .myList:nth-child(3n) /* Selects every 3rd element with class myList */
+/*  .myList:nth-child(3n + 3) /* Selects every 3rd element with class myList, beginning with the 3rd */
+/*  .myList:nth-child(even) /* Selects every even element with class myList */
+
+/* Pseudo-elements: While pseudo-classes give us an alternative way to interact with our HTML elements based on their state or structure, pseudo-elements are more abstract. They allow us to affect parts of our HTML that aren’t elements at all. */
+
+/* ::marker allows you to customize the styling of your <li> elements’ bullets or numbers.
+::first-letter and ::first-line allow you to (you guessed it!) give special styling to the first letter or line of some text.
+::selection allows you to change the highlighting when a user selects text on the page.
+::before and ::after allow us to add extra elements onto the page with CSS, instead of HTML. Using it to decorate text in various ways is one common use case. */
+
+.emojify::before {
+  content: '😎 😄 🤓';
+}
+
+.emojify::after {
+  content: '🤓 😄 😎';
+}
+
+/* Attribute selectors:
+[attribute] - This general selector will select anything where the given attribute exists. Its value doesn’t matter.
+selector[attribute] - Optionally we can combine our attribute selectors with other types of selectors, such as class or element selectors.
+[attribute="value"] - To get really specific, we can use = to match a specific attribute with a specific value. */
+
+[src] {
+  /* This will target any element that has a src attribute. */
+}
+
+img[src] {
+  /* This will only target img elements that have a src attribute. */
+}
+
+img[src='puppy.jpg'] {
+  /* This will target img elements with a src attribute that is exactly "puppy.jpg" */
+}
+
+/* When we have to be more general we use attribute selectors with regex-like selectors */
+
+/* [attribute^="value"] - ^= Will match strings from the start.
+[attribute$="value"] - $= Will match strings from the end.
+[attribute*="value"] - *= The wildcard selector will match anywhere inside the string. */
+
+[class^='aus'] {
+  /* Classes are attributes too!
+    This will target any class that begins with 'aus':
+    class='austria'
+    class='australia'
+  */
+}
+
+[src$='.jpg'] {
+  /* This will target any src attribute that ends in '.jpg':
+  src='puppy.jpg'
+  src='kitten.jpg'
+  */
+}
+
+[for*='ill'] {
+  /* This will target any for attribute that has 'ill' anywhere inside it:
+  for="bill"
+  for="jill"
+  for="silly"
+  for="ill"
+  */
+}
