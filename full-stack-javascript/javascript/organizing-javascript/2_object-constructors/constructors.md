@@ -96,9 +96,10 @@ Here, we defined the `.sayHello` function ‘on’ the `Player.prototype` object
 
 > [!NOTE] **`.__proto__`**
 > In some docs or codebases, you may see `.__proto__` being used on an object to get or set its `[[Prototype]]` instead of using `Object.getPrototypeOf()` or `Object.setPrototypeOf()`. This is due to historical reasons; `.__proto__` is a non-standard and deprecated approach, so it is not recommended to use it to access an object’s `[[Prototype]]`.
->
-> **`Object.getPrototypeOf()` vs `.prototype`**
->
+
+---
+
+> [!NOTE] **`Object.getPrototypeOf()` vs `.prototype`**
 > A common cause of confusion comes from dealing with the `.prototype` property of constructor functions.
 > `.prototype` is a property of functions that determines what a new object instance’s `[[Prototype]]` will be set to when the function is called with `new`. `.prototype` is _not_ for accessing an object’s `[[Prototype]]` - that’s what `Object.getPrototypeOf()` is for.
 >
@@ -183,6 +184,8 @@ From the code, we can see that we’ve defined a `Person` from whom a `Player` i
 
 > [!NOTE]
 > Though it seems to be an easy way to set up Prototypal Inheritance using `Object.setPrototypeOf()`, the prototype chain has to be set up using this function before creating any objects. Using `setPrototypeOf()` after objects have already been created can result in performance issues.
+
+---
 
 > [!WARNING]
 > A warning… this doesn’t work:
